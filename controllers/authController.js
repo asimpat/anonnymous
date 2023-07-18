@@ -81,6 +81,8 @@ exports.userGetMessage = catchAsync(async (req, res, next) => {
   if (!user) {
     return next(new AppError(`No user found with ${req.params.id} ID`, 404));
   }
+
+  user.password = undefined;
   res.status(200).json({
     status: 'success',
     data: {
